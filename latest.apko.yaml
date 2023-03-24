@@ -7,7 +7,7 @@ contents:
   packages:
     - wolfi-baselayout
     - busybox
-    - hello@local
+    - py3-semgrep@local
 
 accounts:
   groups:
@@ -20,8 +20,8 @@ accounts:
   run-as: 65532
 
 entrypoint:
-  command: /usr/local/bin/hello
+  command: /bin/sh
 
 archs:
 - amd64
-- arm64
+# - arm64

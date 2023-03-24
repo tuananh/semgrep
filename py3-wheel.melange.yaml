@@ -1,0 +1,34 @@
+package:
+  name: py3-wheel
+  version: 0.40.0
+  epoch: 0
+  description: A built-package format for Python
+  copyright:
+    - license: MIT
+  dependencies:
+    runtime:
+      - python3
+
+environment:
+  contents:
+    keyring:
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    repositories:
+      - https://packages.wolfi.dev/os
+    packages:
+      - build-base
+      - busybox
+      - ca-certificates-bundle
+      - py3-setuptools
+      - python3
+      - wolfi-base
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://files.pythonhosted.org/packages/source/w/wheel/wheel-${{package.version}}.tar.gz
+      expected-sha256: cd1196f3faee2b31968d626e1731c94f99cbdb67cf5a46e4f5656cbee7738873
+  - runs: |
+      python3 setup.py build
+      python3 setup.py install --skip-build --root="${{targets.destdir}}"
+  - uses: strip
