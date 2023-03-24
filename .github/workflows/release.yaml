@@ -46,14 +46,16 @@ jobs:
         uses: chainguard-dev/actions/melange-build@main
         with:
           config: py3-wheel.melange.yaml
-          sign-with-temporary-key: true
+          sign-with-key: true
+          signing-key-path: ${{ github.workspace }}/melange.rsa
           archs: x86_64
 
       - name: Build py3-semgrep.melange.yaml
         uses: chainguard-dev/actions/melange-build@main
         with:
           config: py3-semgrep.melange.yaml
-          sign-with-temporary-key: true
+          sign-with-key: true
+          signing-key-path: ${{ github.workspace }}/melange.rsa
           archs: x86_64
 
       - uses: chainguard-images/actions/apko-publish@6e9cfac3c961818d9c5ce339a9c559cc0c2e5464
