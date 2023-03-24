@@ -28,7 +28,7 @@ environment:
 pipeline:
   - uses: fetch
     with:
-      uri: https://github.com/returntocorp/semgrep/archive/refs/tags/v{{package.version}}.tar.gz
+      uri: https://github.com/returntocorp/semgrep/archive/refs/tags/v${{package.version}}.tar.gz
       expected-sha256: bced1c0baee4f3795c9c825508bb16d25a64e1adf354d07dcd4c5c36159c1e92
   - runs: |
       cd cli
