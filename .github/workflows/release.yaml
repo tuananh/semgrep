@@ -43,7 +43,7 @@ jobs:
       - uses: chainguard-dev/actions/melange-keygen@main
       
       - name: Build py3-wheel.melange.yaml
-        uses: chainguard-dev/actions/melange-build@main
+        uses: chainguard-dev/actions/melange-build-pkg@main
         with:
           config: py3-wheel.melange.yaml
           sign-with-key: true
@@ -51,7 +51,7 @@ jobs:
           archs: x86_64
 
       - name: Build py3-semgrep.melange.yaml
-        uses: chainguard-dev/actions/melange-build@main
+        uses: chainguard-dev/actions/melange-build-pkg@main
         with:
           config: py3-semgrep.melange.yaml
           sign-with-key: true
