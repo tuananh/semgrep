@@ -39,14 +39,18 @@ jobs:
         run: sudo apt-get install -y qemu-user
 
       - uses: sigstore/cosign-installer@main
+      - uses: chainguard-dev/actions/setup-melange@main
+      - uses: chainguard-dev/actions/melange-keygen@main
       
-      - uses: chainguard-dev/actions/melange-build@main
+      - name: Build py3-wheel.melange.yaml
+        uses: chainguard-dev/actions/melange-build@main
         with:
           config: py3-wheel.melange.yaml
           sign-with-temporary-key: true
           archs: x86_64
 
-      - uses: chainguard-dev/actions/melange-build@main
+      - name: Build py3-semgrep.melange.yaml
+        uses: chainguard-dev/actions/melange-build@main
         with:
           config: py3-semgrep.melange.yaml
           sign-with-temporary-key: true
